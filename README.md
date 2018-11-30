@@ -37,6 +37,12 @@ PS: JS库和WebViewManager库已经在老东家的暗地刷量项目(九点广�
 
 #### **AndroidJsLib的使用**：
 
+在Module中builde.gradle依赖:
+
+```
+  compile 'com.xingen:androidjslib:1.1.0'
+```
+
 **1. 初始化**：
 
 在webview调用`loadUrl()`之前，调用该方法：
@@ -141,5 +147,25 @@ PS: JS库和WebViewManager库已经在老东家的暗地刷量项目(九点广�
 ```
 -keep class com.xingen.androidjslib.injection.* {*;}
 ```
+
+
+
+
+License
+-------
+
+    Copyright 2018 HeXinGen.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 
