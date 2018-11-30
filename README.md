@@ -4,11 +4,11 @@
 
 模块分为：
 
-- 一个JS库(支持自动点击，输入，滑动)，采用js注入技术，webview模拟用户真实操作。
-- 一个WebViewManager封装库,采用1px的透明技术，不依赖于Activity进行加载。
-- 一个WebView封装库，里面封装，一些常见的国产ROM上的问题处理，常见的操作包含打开京东页面，应用宝支付，微信支付等等。
+- androidJs库：一个JS库(支持自动点击，输入，滑动)，采用js注入技术，webview模拟用户真实操作。
+- webviewManager库:一个WebViewManager封装库,采用1px的透明技术，不依赖于Activity进行加载，悬浮窗口显示。
+- webviewLib库：一个WebView封装库，里面封装，一些常见的国产ROM上的问题处理，常见的操作包含打开京东页面，应用宝支付，微信支付等等。
 
-PS: JS库和WebViewManager库已经在老东家的暗地刷量项目(九点广告，百度糯米推广项目)实战检验过
+本项目，在九点广告，百度糯米商家推广中实战，提取核心模块，封装成一个通用页面广告推广的库。
 
 欢迎参与讨论常见的webview刷量页面广告的黑科技，微信号：H675134792。
 
@@ -37,9 +37,11 @@ PS: JS库和WebViewManager库已经在老东家的暗地刷量项目(九点广�
 
 #### **AndroidJsLib的使用**：
 
-在Module中builde.gradle依赖:
+**前期工作**
 
-```
+在Module中builde.gradle依赖该库，如下所示：
+
+```groovy
   compile 'com.xingen:androidjslib:1.1.0'
 ```
 
