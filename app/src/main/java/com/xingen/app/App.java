@@ -12,10 +12,14 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance=this;
-        loadWebViewManager();
+       loadWebViewManager();
     }
     private void loadWebViewManager(){
-       WebViewManagerTest.test(this);
+        try {
+            WebViewManagerTest.test(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public static  App getInstance(){
         return instance;

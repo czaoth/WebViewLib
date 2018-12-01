@@ -42,7 +42,7 @@
 在Module中builde.gradle依赖该库，如下所示：
 
 ```groovy
-  compile 'com.xingen:androidjslib:1.1.0'
+  compile 'com.xingen:androidjslib:1.1.1'
 ```
 
 **1. 初始化**：
@@ -150,6 +150,54 @@
 -keep class com.xingen.androidjslib.injection.* {*;}
 ```
 
+#### **WeviewManager库的使用**：
+
+webviewManager库适合哪些场景：
+
+- WebView的加载是用户不知情下的无脸试跑
+- 不依赖Activity，1px的悬浮窗内运行。
+
+**1. 在module的build.gradle中依赖**：
+```
+ compile 'com.xingen:webviewManager:1.1.1'
+```
+
+**2. 初始化操作**：
+```
+       WebViewManager webViewManager=new WebViewManager()
+        //进行初始化,传入false，则视图不显示
+        webViewManager.init(context, false);
+```
+**3. 添加webview到manager，脱离Activity进行加载**:
+```
+        webViewManager.addWebView(WebView webView) 
+```
+**4. webview加载url,设置相应的client**:
+```
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                Log.i(TAG, " 1px透明悬浮窗 技术加载  页面的url是：" + url);
+            }
+        });
+        webView.loadUrl("https://github.com/13767004362");
+```
+
+
+**在android N_MR1及其更高的版本，悬浮弹窗的type_toast失效问题**：
+
+- 要么考虑，授权系统级别弹窗
+- 要么考虑，targetSdkVersion 低于22
 
 
 

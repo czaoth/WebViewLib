@@ -35,7 +35,7 @@ public class WebViewManager {
 
     public void init(Context context, boolean show) {
         this.appContext = context.getApplicationContext();
-        if (contentLayout==null){
+        if (contentLayout == null) {
             calculationScreenSize(context);
             createChild(context);
             addToWindow(context, show);
@@ -87,7 +87,18 @@ public class WebViewManager {
      */
     private void createWindowParams(boolean show) {
         windowParams = new WindowManager.LayoutParams();
-        windowParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        /**
+         *
+         * 在Android SDK N_MR1开始，type_toast被限制，为了实现悬浮效果，使用type_phone，且项目targetSdkVersion 低于22。
+         *
+         * http://androidxref.com/8.0.0_r4/xref/frameworks/base/services/core/java/com/android/server/wm/WindowManagerService.java
+         * http://androidxref.com/8.0.0_r4/xref/frameworks/base/core/java/android/view/ViewRootImpl.java
+         */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            windowParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+        } else {
+            windowParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        }
         windowParams.format = PixelFormat.RGBA_8888;
         windowParams.x = 0;
         windowParams.y = 0;
@@ -132,9 +143,10 @@ public class WebViewManager {
         }
     }
 
-    public WebView  addWebView(){
-       return addWebView(null);
+    public WebView addWebView() {
+        return addWebView(null);
     }
+
     /**
      * 增加WebView
      *

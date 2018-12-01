@@ -3,8 +3,6 @@ apply plugin: 'com.novoda.bintray-release'//添加
 android {
     compileSdkVersion 27
 
-
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 27
@@ -32,10 +30,13 @@ dependencies {
 
 //添加
 publish {
-    userOrg = 'h13767004362'//bintray.com用户名
+    userOrg = 'hexingen'//bintray.com用户名
     groupId = 'com.xingen'//jcenter上的路径
     artifactId = 'androidjslib'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.1.1'//版本号
     desc = 'Oh hi, this is a nice description for a project, right?'//描述，不重要
-    website = 'https://github.com/13767004362/WebViewLib'
+    website = 'https://github.com/13767004362/WebViewLib'//网站，github上的地址
 }
+
+
+
